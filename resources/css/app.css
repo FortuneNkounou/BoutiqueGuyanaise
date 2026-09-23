@@ -1,0 +1,110 @@
+/* Bootstrap 5 */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Bootstrap Icons */
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* Variables couleurs Boutique Guyanaise */
+:root {
+    --bg-primary: #2d6a4f;
+    --bg-secondary: #40916c;
+    --bg-light: #d8f3dc;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--bg-primary) !important;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+/* Boutons */
+.btn-primary {
+    background-color: var(--bg-primary);
+    border-color: var(--bg-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--bg-secondary);
+    border-color: var(--bg-secondary);
+}
+
+.btn-outline-primary {
+    color: var(--bg-primary);
+    border-color: var(--bg-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--bg-primary);
+    border-color: var(--bg-primary);
+    color: #fff;
+}
+
+.bg-primary {
+    background-color: var(--bg-primary) !important;
+}
+
+.text-primary {
+    color: var(--bg-primary) !important;
+}
+
+/* Footer */
+footer {
+    background-color: #1b4332;
+    color: #ccc;
+}
+
+/* Cartes produits */
+.product-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.product-img {
+    height: 200px;
+    object-fit: cover;
+    background: var(--bg-light);
+}
+
+/* Badge panier */
+.cart-badge {
+    font-size: 0.65rem;
+}
+
+/* Hero section accueil */
+.hero-section {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    background-image: url('/images/hero.png');
+    background-size: cover;
+    background-position: center;
+    /* couleur de secours si pas d'image */
+    background-color: #2d6a4f;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    padding: 80px 0;
+}
