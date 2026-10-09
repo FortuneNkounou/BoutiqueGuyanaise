@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Administration — Boutique Guyanaise')</title>
-    <!-- Bootstrap + Icons via Vite (local) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         :root { --sidebar-width: 240px; --bg-primary: #2d6a4f; }

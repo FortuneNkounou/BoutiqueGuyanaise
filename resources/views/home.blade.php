@@ -6,7 +6,6 @@
 
 {{-- Hero --}}
 <div class="hero-section mb-5">
-    {{-- remplace l'URL ci-dessous par ton image : asset('images/hero.png') par exemple --}}
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">
         <h1 class="display-3 fw-bold mb-3">🌿 Kréyol Market</h1>
@@ -34,7 +33,7 @@
                 <a href="{{ route('categories.show', $category->slug) }}" class="text-decoration-none">
                     <div class="card text-center h-100 border-0 shadow-sm product-card">
                         <div class="card-body py-4">
-                            <div class="fs-1 mb-2">🏷️</div>
+                            <div class="fs-1 mb-2"></div>
                             <p class="fw-semibold mb-1 small">{{ $category->name }}</p>
                             <p class="text-muted" style="font-size:.75rem;">{{ $category->products_count }} produit(s)</p>
                         </div>

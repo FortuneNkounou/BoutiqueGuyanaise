@@ -18,7 +18,7 @@
                 <h6 class="text-white">Contact</h6>
                 <p class="small">
                     <i class="bi bi-geo-alt me-1"></i>Cayenne, Guyane française<br>
-                    <i class="bi bi-envelope me-1"></i>contact@boutiqueguyanaise.fr
+                    <i class="bi bi-envelope me-1"></i>
                 </p>
             </div>
         </div>

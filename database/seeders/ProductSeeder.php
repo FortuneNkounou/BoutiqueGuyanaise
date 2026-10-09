@@ -115,7 +115,7 @@ class ProductSeeder extends Seeder
             unset($data['categories']);
 
             $product = Product::create($data);
-            // Attache les catégories (relation Many-to-Many)
+            //  (relation Many-to-Many)
             $product->categories()->attach($categories);
         }
     }

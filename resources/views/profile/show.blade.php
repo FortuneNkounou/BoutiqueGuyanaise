@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            {{-- Zone danger : suppression du compte --}}
+            {{-- suppression du compte --}}
             <div class="card border-danger border-0 shadow-sm">
                 <div class="card-header fw-bold bg-danger text-white">Zone de danger</div>
                 <div class="card-body">

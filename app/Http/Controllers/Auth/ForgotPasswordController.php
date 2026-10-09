@@ -38,9 +38,13 @@ class ForgotPasswordController extends Controller
 
         $url = route('password.reset', ['token' => $token, 'email' => $request->email]);
 
-        Mail::send('emails.reset-password', ['url' => $url], function ($msg) use ($request) {
-            $msg->to($request->email)->subject('Réinitialisation de mot de passe - Boutique Guyanaise');
-        });
+        try {
+            Mail::send('emails.reset-password', ['url' => $url], function ($msg) use ($request) {
+                $msg->to($request->email)->subject('Réinitialisation de mot de passe - Boutique Guyanaise');
+            });
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => 'Impossible d\'envoyer l\'email. Vérifiez votre connexion ou réessayez plus tard.']);
+        }
 
         return back()->with('success', 'Un lien de réinitialisation a été envoyé.');
     }

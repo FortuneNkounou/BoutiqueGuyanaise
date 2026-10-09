@@ -89,7 +89,7 @@ footer {
     min-height: 520px;
     display: flex;
     align-items: center;
-    background-image: url('/images/hero.png');
+    background-image: url('/images/hero.jpg');
     background-size: cover;
     background-position: center;
     /* couleur de secours si pas d'image */

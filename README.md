@@ -1,58 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Boutique Guyanaise
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Site e-commerce de produits locaux authentiques de Guyane française. Développé avec Laravel 13 dans le cadre du cours de développement web L3 2026/2027.
 
-## About Laravel
+## Fonctionnalités
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Catalogue de produits avec filtrage par catégorie et recherche
+- Panier (sans connexion requise)
+- Inscription, connexion, déconnexion
+- Réinitialisation de mot de passe par email
+- Gestion du profil et suppression de compte
+- Passage et suivi de commandes
+- Espace d'administration complet (CRUD produits, catégories, utilisateurs, commandes)
+- Relation Many-to-Many entre produits et catégories
+- Upload de photos pour les produits
+- Interface responsive avec Bootstrap 5
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Stack technique
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend** : PHP 8.5 / Laravel 13
+- **Base de données** : MySQL
+- **Frontend** : Bootstrap 5, Bootstrap Icons, Blade
+- **Build** : Vite + npm
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prérequis
+- PHP >= 8.4
+- Composer
+- MySQL
+- Node.js + npm
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Étapes
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
+**1. Cloner le projet**
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/ton-pseudo/BoutiqueGuyanaise.git
+cd BoutiqueGuyanaise
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+**2. Installer les dépendances PHP**
+```bash
+composer install
+```
 
-## Contributing
+**3. Installer les dépendances JS et compiler les assets**
+```bash
+npm install
+npm run build
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**4. Configurer l'environnement**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Code of Conduct
+Modifier le fichier `.env` avec vos paramètres de base de données :
+```
+DB_DATABASE=boutiqueguyanaise
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**5. Créer la base de données et insérer les données de test**
+```bash
+php artisan migrate:fresh --seed
+```
 
-## Security Vulnerabilities
+**6. Créer le lien symbolique pour les images**
+```bash
+php artisan storage:link
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**7. Lancer le serveur**
+```bash
+php artisan serve
+```
 
-## License
+Le site est accessible sur `http://127.0.0.1:8000`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Comptes de test
+
+| Rôle | Email | Mot de passe |
+|------|-------|-------------|
+| Administrateur | admin@boutiqueguyanaise.fr | admin1234 |
+| Utilisateur | jean@example.com | password |
+| Utilisateur | marie@example.com | password |
+
+L'espace d'administration est accessible sur `/admin` avec le compte administrateur.
+
+---
+
+## Structure du projet
+
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── Auth/        # Connexion, inscription, mot de passe oublié
+│   │   ├── Admin/       # Espace administration
+│   │   ├── CartController.php
+│   │   ├── OrderController.php
+│   │   ├── ProductController.php
+│   │   └── ...
+│   └── Middleware/
+│       └── AdminMiddleware.php
+└── Models/
+    ├── User.php
+    ├── Product.php
+    ├── Category.php
+    ├── Order.php
+    └── OrderItem.php
+
+database/
+├── migrations/   # Structure des tables
+└── seeders/      # Données de test
+
+resources/views/
+├── layouts/      # Templates principaux (app.blade.php, admin.blade.php)
+├── admin/        # Vues de l'espace admin
+├── auth/         # Connexion, inscription
+└── ...
+```
+
+## Configuration email
+
+Le projet utilise un service SMTP pour l'envoi des emails de réinitialisation de mot de passe. Configurer les variables `MAIL_*` dans le fichier `.env`.
+
+Pour les tests en local, [Mailtrap](https://mailtrap.io) est recommandé.
